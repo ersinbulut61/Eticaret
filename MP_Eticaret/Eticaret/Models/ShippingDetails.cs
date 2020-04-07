@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace Eticaret.Models
+{
+    public class ShippingDetails
+    {
+        public string UserName { get; set; }
+        [Required(ErrorMessage ="Lütfen Adres Tanımını Giriniz..")]
+        public string AdresBasligi { get; set; }
+        [Required(ErrorMessage = "Lütfen Adres Giriniz..")]
+        public string Adres { get; set; }
+        [Required(ErrorMessage = "Lütfen İl Giriniz..")]
+        public string Il { get; set; }
+        [Required(ErrorMessage = "Lütfen ilçe Giriniz..")]
+        public string Ilce { get; set; }
+        [Required(ErrorMessage = "Lütfen Mahalle Giriniz..")]
+        public string Mahalle { get; set; }
+        [Required(ErrorMessage = "Lütfen Posta Kodu Giriniz..")]
+        public string PostaKodu { get; set; }
+
+
+
+
+
+
+        [Required(ErrorMessage = "Lütfen Kart Numarası Giriniz..")]
+        [RegularExpression(@"^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$", ErrorMessage = "Geçersiz Kart Numarası")]//visa için
+        public string CartNumber { get; set; }
+        [Required(ErrorMessage = "Lütfen Güvenlik Numarası Giriniz..")]
+        [RegularExpression(@"^[0-9]{3,4}$", ErrorMessage = "Geçersiz Güvenlik Numarası")]
+        public string SecurityNumber { get; set; }
+        [Required(ErrorMessage = "Lütfen Kart Sahibinin Adını Giriniz..")]
+        public string CartHasName { get; set; }
+        [Required(ErrorMessage = "Lütfen Son Kullanma Yıl Giriniz..")]
+        [RegularExpression(@"\d{4}$", ErrorMessage = "Geçersiz Yıl Bilgisi")]
+        public int ExpYear { get; set; }
+        [Required(ErrorMessage = "Lütfen Son Kullanma Ay Giriniz..")]
+        [RegularExpression(@"^[0-9]{1,2}", ErrorMessage = "Geçersiz Ay Bilgisi")]
+        public int ExpMonth { get; set; }
+    }
+}
